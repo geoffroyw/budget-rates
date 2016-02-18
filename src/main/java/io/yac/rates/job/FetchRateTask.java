@@ -30,7 +30,7 @@ public class FetchRateTask {
         for (ECBRate ecbRate : ecbRates) {
             CurrencyRate currencyRate = rateRepository.findByCurrency(ecbRate.getCurrency());
             if (currencyRate == null) {
-                currencyRate = new CurrencyRate();
+                currencyRate = new CurrencyRate.Builder().build();
                 currencyRate.setCurrency(ecbRate.getCurrency());
                 currencyRate.setRates(new ArrayList<>());
             }
