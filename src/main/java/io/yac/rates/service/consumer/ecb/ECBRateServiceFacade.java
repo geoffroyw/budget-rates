@@ -11,7 +11,6 @@ import org.springframework.web.client.RestTemplate;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
-import java.util.Currency;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -26,7 +25,7 @@ public class ECBRateServiceFacade {
 
     private static final String ECB_RATES_ENDPOINT = "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml";
 
-    public List<ECBRate> consumeRates() {
+    public List<ECBRate> fetchRates() {
 
         RestTemplate restTemplate = new RestTemplate();
         Envelope ecbRates = restTemplate.getForObject(ECB_RATES_ENDPOINT, Envelope.class);
@@ -44,8 +43,8 @@ public class ECBRateServiceFacade {
 
 
         return cubeList.stream()
-                .map((cube) -> ECBRate.builder().date(date).currency(Currency.getInstance(cube.getCurrency()))
-                        .amount(cube.getRate()).build()).collect(Collectors.toList());
+                .map((cube) -> ECBRate.builder().date(date).currency(cube.getCurrency()).amount(cube.getRate()).build())
+                .collect(Collectors.toList());
 
     }
 }

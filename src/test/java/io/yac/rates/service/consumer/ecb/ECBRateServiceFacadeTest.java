@@ -13,7 +13,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.Currency;
 import java.util.Date;
 import java.util.List;
 
@@ -33,7 +32,7 @@ public class ECBRateServiceFacadeTest {
 
     @Test
     public void testConsumeRates() {
-        List<ECBRate> ecbRates = ecbRateServiceFacade.consumeRates();
+        List<ECBRate> ecbRates = ecbRateServiceFacade.fetchRates();
         assertThat(ecbRates, is(notNullValue()));
     }
 
@@ -66,17 +65,16 @@ public class ECBRateServiceFacadeTest {
 
     @Test
     public void ecbRate_currency_is_mapping_to_the_currency() {
-        String currencyCode = "USD";
 
         String anyDate = "2016-02-18";
         Envelope envelope =
-                EnvelopeFactory.factory().date(anyDate).addRate(Rate.builder().currency(currencyCode).build())
+                EnvelopeFactory.factory().date(anyDate).addRate(Rate.builder().currency("USD").build())
                         .build();
 
         ECBRateServiceFacade ecbRateServiceFacade = new ECBRateServiceFacade();
 
         assertThat(ecbRateServiceFacade.processServiceResponse(envelope).get(0).getCurrency(),
-                is(Currency.getInstance("USD")));
+                is("USD"));
     }
 
     @Test

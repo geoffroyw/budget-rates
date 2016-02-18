@@ -1,7 +1,6 @@
 package io.yac.rates.service.consumer.ecb;
 
 import java.math.BigDecimal;
-import java.util.Currency;
 import java.util.Date;
 
 /**
@@ -9,24 +8,24 @@ import java.util.Date;
  */
 public class ECBRate {
 
-    private Currency currency;
+    private String currency;
     private Date date;
     private BigDecimal rate;
 
     private ECBRate() {
     }
 
-    private ECBRate(Currency currency, Date date, BigDecimal rate) {
+    private ECBRate(String currency, Date date, BigDecimal rate) {
         this.currency = currency;
         this.date = date;
         this.rate = rate;
     }
 
-    public Currency getCurrency() {
+    public String getCurrency() {
         return currency;
     }
 
-    public void setCurrency(Currency currency) {
+    public void setCurrency(String currency) {
         this.currency = currency;
     }
 
@@ -61,11 +60,11 @@ public class ECBRate {
     }
 
     public static class Builder {
-        private Currency currency;
+        private String currency;
         private Date date;
         private BigDecimal amount;
 
-        public Builder currency(Currency currency) {
+        public Builder currency(String currency) {
             this.currency = currency;
             return this;
         }
