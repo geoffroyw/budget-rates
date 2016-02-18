@@ -1,83 +1,78 @@
-//
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
-// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2016.02.17 à 09:03:02 PM CET 
-//
+package io.yac.rates.service.consumer.ecb.iface;
 
-
-package io.yac.rates.iface.ecb.v2;
-
-import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.*;
-import java.io.Serializable;
+import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 
 /**
- * <p>Classe Java pour ECBRate complex type.
+ * <p>Classe Java pour anonymous complex type.
  * <p/>
  * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * <p/>
  * <pre>
- * &lt;complexType name="ECBRate">
+ * &lt;complexType>
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="Cube" type="{http://www.ecb.int/vocabulary/2002-08-01/eurofxref}ECBRate" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element ref="{http://www.ecb.int/vocabulary/2002-08-01/eurofxref}Cube" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
- *       &lt;attribute name="currency" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="rate" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="time" type="{http://www.w3.org/2001/XMLSchema}string" />
+ *       &lt;attribute name="currency" type="{http://www.w3.org/2001/XMLSchema}NCName" />
+ *       &lt;attribute name="rate" type="{http://www.w3.org/2001/XMLSchema}decimal" />
+ *       &lt;attribute name="time" type="{http://www.w3.org/2001/XMLSchema}NMTOKEN" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "ECBRate", namespace = "http://www.ecb.int/vocabulary/2002-08-01/eurofxref", propOrder = {
-        "content"
+@XmlType(name = "", propOrder = {
+        "cube"
 })
-public class ECBRate {
+@XmlRootElement(name = "Cube", namespace = "http://www.ecb.int/vocabulary/2002-08-01/eurofxref")
+public class Cube {
 
-    @XmlElementRef(name = "Cube", namespace = "http://www.ecb.int/vocabulary/2002-08-01/eurofxref",
-                   type = JAXBElement.class, required = false)
-    @XmlMixed
-    protected List<Serializable> content;
+    @XmlElement(name = "Cube", namespace = "http://www.ecb.int/vocabulary/2002-08-01/eurofxref")
+    protected List<Cube> cube;
     @XmlAttribute(name = "currency")
+    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+    @XmlSchemaType(name = "NCName")
     protected String currency;
     @XmlAttribute(name = "rate")
-    protected String rate;
+    protected BigDecimal rate;
     @XmlAttribute(name = "time")
+    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+    @XmlSchemaType(name = "NMTOKEN")
     protected String time;
 
     /**
-     * Gets the value of the content property.
+     * Gets the value of the cube property.
      * <p/>
      * <p/>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the content property.
+     * This is why there is not a <CODE>set</CODE> method for the cube property.
      * <p/>
      * <p/>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getContent().add(newItem);
+     *    getCube().add(newItem);
      * </pre>
      * <p/>
      * <p/>
      * <p/>
      * Objects of the following type(s) are allowed in the list
-     * {@link JAXBElement }{@code <}{@link ECBRate }{@code >}
-     * {@link String }
+     * {@link Cube }
      */
-    public List<Serializable> getContent() {
-        if (content == null) {
-            content = new ArrayList<Serializable>();
+    public List<Cube> getCube() {
+        if (cube == null) {
+            cube = new ArrayList<Cube>();
         }
-        return this.content;
+        return this.cube;
     }
 
     /**
@@ -104,9 +99,9 @@ public class ECBRate {
      * Obtient la valeur de la propriété rate.
      *
      * @return possible object is
-     * {@link String }
+     * {@link BigDecimal }
      */
-    public String getRate() {
+    public BigDecimal getRate() {
         return rate;
     }
 
@@ -114,9 +109,9 @@ public class ECBRate {
      * Définit la valeur de la propriété rate.
      *
      * @param value allowed object is
-     *              {@link String }
+     *              {@link BigDecimal }
      */
-    public void setRate(String value) {
+    public void setRate(BigDecimal value) {
         this.rate = value;
     }
 
@@ -142,10 +137,10 @@ public class ECBRate {
 
     @Override
     public String toString() {
-        return "ECBRate{" +
-                "content=" + content +
+        return "Cube{" +
+                "cube=" + cube +
                 ", currency='" + currency + '\'' +
-                ", rate='" + rate + '\'' +
+                ", rate=" + rate +
                 ", time='" + time + '\'' +
                 '}';
     }
