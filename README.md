@@ -19,7 +19,7 @@ One can also directly execute ```./gradlew bootRun``` to build and run the proje
 
 To convert 123 EUR in USD, one should make the following GET request
 ```
-http://localhost:8080/convert?amount=123&amountCurrency=EUR&toCurrency
+http://localhost:8080/convert?amount=123&amountCurrency=EUR&toCurrency=USD
 ```
 
 Response will be the following JSON  
