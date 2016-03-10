@@ -1,0 +1,19 @@
+spring:
+  data:
+    mongodb:
+      database: exchangeRates
+      host: localhost
+      repositories:
+        enabled: true
+      uri: mongodb://localhost/test
+
+management:
+  port: 8081
+
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+    metadataMap:
+      instanceId: ${vcap.application.instance_id:${spring.application.name}:${spring.application.instance_id:${server.port}}}
+  client:
+    registryFetchIntervalSeconds: 5
