@@ -7,8 +7,11 @@ spring:
         enabled: true
       uri: mongodb://localhost/test
 
-management:
-  port: 8081
+#management:
+#  port: 8091
+
+server:
+  port: 8090
 
 eureka:
   instance:
