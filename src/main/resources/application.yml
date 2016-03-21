@@ -6,6 +6,9 @@ spring:
       repositories:
         enabled: true
       uri: mongodb://localhost/test
+  jmx:
+    default-domain: io.yac.rates
+    enabled: true
 
 #management:
 #  port: 8091
@@ -22,3 +25,6 @@ eureka:
     registryFetchIntervalSeconds: 5
     healthcheck:
       enabled: true
+jolokia:
+  config:
+    debug: true

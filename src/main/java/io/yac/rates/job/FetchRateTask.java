@@ -6,7 +6,10 @@ import io.yac.rates.domain.repository.CurrencyRateRepository;
 import io.yac.rates.service.consumer.ecb.ECBRate;
 import io.yac.rates.service.consumer.ecb.ECBRateServiceFacade;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jmx.export.annotation.ManagedOperation;
+import org.springframework.jmx.export.annotation.ManagedResource;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -15,6 +18,8 @@ import java.util.List;
 /**
  * Created by geoffroy on 18/02/2016.
  */
+@Component
+@ManagedResource
 public class FetchRateTask {
 
     @Autowired
@@ -24,6 +29,7 @@ public class FetchRateTask {
     CurrencyRateRepository rateRepository;
 
     @Scheduled(cron = "30 14 * * * *") //Every day at 14:30
+    @ManagedOperation(description = "Trigger the fetch ECB rate task.")
     public void fetchRate() {
         List<ECBRate> ecbRates = ecbRateService.fetchRates();
 
